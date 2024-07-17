@@ -30,4 +30,5 @@ dependencyResolutionManagement {
 
 include(":composeApp")
 include(":mCore")
+include(":mFeatures:featureApi")
 include(":mFeatures:featureLaunch")
