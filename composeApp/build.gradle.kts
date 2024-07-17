@@ -32,6 +32,8 @@ kotlin {
         
         androidMain.dependencies {
             implementation(compose.preview)
+            implementation(libs.koin.core)
+            implementation(libs.koin.android)
             implementation(libs.androidx.activity.compose)
         }
         commonMain.dependencies {
@@ -44,6 +46,8 @@ kotlin {
 
             implementation(libs.androidx.navigation)
 
+            //di
+            implementation(libs.koin.core)
             //feature Api (For DI)
             implementation(project(":mFeatures:featureApi"))
             //features
