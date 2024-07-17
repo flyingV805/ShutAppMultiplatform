@@ -7,13 +7,19 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import org.koin.compose.getKoin
+import org.koin.compose.koinInject
+import org.koin.core.qualifier.named
 
 @Composable
 @Preview
 fun App() {
 
-    val featureLaunch = remember { FeatureLaunch() }
+    //val featureLaunch = remember { FeatureLaunch() }
     val navController: NavHostController = rememberNavController()
+
+    val featureLaunch = getKoin().get<FeatureLaunch>()
+    val features = getKoin().getAll<Feature>()
 
     MaterialTheme {
 
@@ -23,7 +29,9 @@ fun App() {
             modifier = Modifier.fillMaxSize()
         ){
 
-            composable(route = featureLaunch.route()){ featureLaunch.screen() }
+            features.forEach { feature ->
+                composable(route = feature.route()){ feature.screen() }
+            }
 
         }
 
