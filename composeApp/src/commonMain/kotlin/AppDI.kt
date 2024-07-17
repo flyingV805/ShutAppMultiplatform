@@ -13,9 +13,3 @@ val appDiModules = listOf(
     coreModule,
     featuresModule
 )
-
-fun initAppleDi(){
-    startKoin {
-        modules(appDiModules)
-    }
-}

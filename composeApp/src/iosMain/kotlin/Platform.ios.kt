@@ -1,3 +1,4 @@
+import org.koin.core.context.startKoin
 import platform.UIKit.UIDevice
 
 class IOSPlatform: Platform {
