@@ -1,4 +1,4 @@
-package ui
+package kz.flyingv.shutapp.launch.ui
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Scaffold

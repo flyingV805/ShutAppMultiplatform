@@ -1,22 +1,22 @@
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
-    alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.androidLibrary)
 }
 
 kotlin {
+
     androidTarget {
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_11)
         }
     }
-    
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -27,13 +27,11 @@ kotlin {
             isStatic = true
         }
     }
-    
+
     sourceSets {
-        
+
         androidMain.dependencies {
             implementation(compose.preview)
-            implementation(libs.koin.core)
-            implementation(libs.koin.android)
             implementation(libs.androidx.activity.compose)
         }
         commonMain.dependencies {
@@ -44,26 +42,18 @@ kotlin {
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
 
-            implementation(libs.androidx.navigation)
-
-
-            implementation(libs.compottie)
-
-            //di
-            implementation(libs.koin.core)
-            //implementation(libs.koin.compose)
-            //feature Api (For DI)
+            //feature Api
             implementation(project(":mFeatures:featureApi"))
-            //features
-            implementation(project(":mFeatures:featureLaunch"))
-            implementation(project(":mFeatures:featureAuth"))
+
 
         }
     }
+
 }
 
+
 android {
-    namespace = "kz.flyingv.shutapp"
+    namespace = "kz.flyingv.shutapp.auth"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
@@ -71,11 +61,8 @@ android {
     sourceSets["main"].resources.srcDirs("src/commonMain/resources")
 
     defaultConfig {
-        applicationId = "kz.flyingv.shutapp"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
-        versionCode = 1
-        versionName = "1.0"
     }
     packaging {
         resources {
@@ -98,4 +85,3 @@ android {
         debugImplementation(compose.uiTooling)
     }
 }
-
