@@ -7,9 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import org.jetbrains.compose.ui.tooling.preview.Preview
-import org.koin.compose.getKoin
-import org.koin.compose.koinInject
-import org.koin.core.qualifier.named
+import org.koin.mp.KoinPlatform.getKoin
 
 @Composable
 @Preview
@@ -18,8 +16,8 @@ fun App() {
     //val featureLaunch = remember { FeatureLaunch() }
     val navController: NavHostController = rememberNavController()
 
-    val featureLaunch = getKoin().get<FeatureLaunch>()
-    val features = getKoin().getAll<Feature>()
+    val featureLaunch = remember { getKoin().get<FeatureLaunch>() }
+    val features = remember{ getKoin().getAll<Feature>() }
 
     MaterialTheme {
 

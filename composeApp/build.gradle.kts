@@ -48,7 +48,7 @@ kotlin {
 
             //di
             implementation(libs.koin.core)
-            implementation(libs.koin.compose)
+            //implementation(libs.koin.compose)
             //feature Api (For DI)
             implementation(project(":mFeatures:featureApi"))
             //features

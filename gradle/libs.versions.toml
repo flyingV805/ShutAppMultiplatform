@@ -14,7 +14,7 @@ compose-plugin = "1.6.11"
 junit = "4.13.2"
 kotlin = "2.0.0"
 androidx-navigation = "2.7.0-alpha07"
-koin = "3.2.0"
+koin = "3.5.6"
 trixnity = "4.5.1"
 
 [libraries]
@@ -33,7 +33,6 @@ matrix-trixnity = { module = "net.folivo:trixnity-client", version.ref = "trixni
 
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
-koin-compose = { module = "io.insert-koin:koin-androidx-compose", version = "3.6.0-Beta4" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
