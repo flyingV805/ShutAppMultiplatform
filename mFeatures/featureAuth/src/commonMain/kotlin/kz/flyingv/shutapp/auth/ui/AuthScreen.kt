@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import kz.flyingv.shutapp.auth.ui.fragment.WelcomeFragment
 import kz.flyingv.shutapp.uikit.decoration.accentGradient
 import kz.flyingv.shutapp.uikit.decoration.welcomeGradientAccent
 import kz.flyingv.shutapp.uikit.decoration.welcomeGradientPrimary
@@ -41,6 +42,7 @@ internal fun AuthScreen() {
         }
         Text("AuthScreen!!!")
 
+        WelcomeFragment()
 
     }
 
