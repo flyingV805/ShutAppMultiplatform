@@ -30,6 +30,7 @@ dependencyResolutionManagement {
 
 include(":composeApp")
 include(":mCore")
+include(":mUIKit")
 include(":mFeatures:featureApi")
 include(":mFeatures:featureLaunch")
 include(":mFeatures:featureAuth")
