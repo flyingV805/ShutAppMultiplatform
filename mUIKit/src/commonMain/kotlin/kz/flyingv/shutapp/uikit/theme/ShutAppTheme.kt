@@ -1,6 +1,7 @@
 package kz.flyingv.shutapp.uikit.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material.Colors
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
@@ -19,12 +20,11 @@ private val lightColorScheme = lightColors(
 @Composable
 fun ShutAppTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    // for Android 12+
-    dynamicColor: Boolean = true,
+    dynamicColorScheme: Colors? = null,
     content: @Composable () -> Unit
 ){
 
-    val colorScheme = if(darkTheme){darkColorScheme}else{lightColorScheme}
+    val colorScheme = dynamicColorScheme ?: if(darkTheme){darkColorScheme}else{lightColorScheme}
 
     MaterialTheme(
         colors = colorScheme,

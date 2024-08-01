@@ -32,9 +32,11 @@ kotlin {
         
         androidMain.dependencies {
             implementation(compose.preview)
+            implementation(compose.material3)
             implementation(libs.koin.core)
             implementation(libs.koin.android)
             implementation(libs.androidx.activity.compose)
+            implementation(libs.accompanist.systemuicontroller)
         }
         commonMain.dependencies {
             implementation(compose.runtime)

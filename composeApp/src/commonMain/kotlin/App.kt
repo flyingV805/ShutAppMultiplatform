@@ -1,6 +1,5 @@
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material.Colors
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
@@ -13,19 +12,21 @@ import kz.flyingv.shutapp.uikit.theme.ShutAppTheme
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.mp.KoinPlatform.getKoin
-import shutapp.composeapp.generated.resources.Res
 
-@OptIn(ExperimentalResourceApi::class)
 @Composable
 @Preview
-fun App() {
+fun App(
+    dynamicColorScheme: Colors? = null
+) {
 
     val navController: NavHostController = rememberNavController()
 
     val featureLaunch = remember { getKoin().get<FeatureLaunch>() }
     val features = remember { getKoin().getAll<Feature>() }
 
-    ShutAppTheme {
+    ShutAppTheme(
+        dynamicColorScheme = dynamicColorScheme
+    ) {
 
         NavHost(
             navController = navController,
