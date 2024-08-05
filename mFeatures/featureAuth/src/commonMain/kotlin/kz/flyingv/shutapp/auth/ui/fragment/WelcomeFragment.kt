@@ -23,12 +23,13 @@ import io.github.alexzhirkevich.compottie.LottieCompositionSpec
 import io.github.alexzhirkevich.compottie.LottieConstants
 import io.github.alexzhirkevich.compottie.animateLottieCompositionAsState
 import io.github.alexzhirkevich.compottie.rememberLottieComposition
+import kz.flyingv.shutapp.uikit.composable.ShutAppButton
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import shutapp.mfeatures.featureauth.generated.resources.Res
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
-fun WelcomeFragment(){
+fun WelcomeFragment(welcomeDone: () -> Unit?){
 
     var compositionString by remember { mutableStateOf<String?>(null) }
     LaunchedEffect(Unit){ compositionString = Res.readBytes("files/welcome.json").decodeToString() }
@@ -44,18 +45,14 @@ fun WelcomeFragment(){
         if(compositionString != null){
 
             val composition by rememberLottieComposition( LottieCompositionSpec.JsonString(compositionString!!) )
-            val progress by animateLottieCompositionAsState(composition)
 
             LottieAnimation(
                 composition = composition,
-                //progress = { progress },
                 modifier = Modifier.weight(1f),
                 iterations = LottieConstants.IterateForever,
             )
 
         }
-
-
 
         Text(
             text = "Welcome to ShutApp!",
@@ -71,11 +68,11 @@ fun WelcomeFragment(){
         )
 
         Spacer(modifier = Modifier.height(32.dp))
-/*
-        LargeButton(
+
+        ShutAppButton(
             buttonText = "Let's start!",
-            onClick = { onDone() }
-        )*/
+            onClick = { welcomeDone() }
+        )
 
         Spacer(modifier = Modifier.height(16.dp))
 

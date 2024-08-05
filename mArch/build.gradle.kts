@@ -30,27 +30,9 @@ kotlin {
 
     sourceSets {
 
-        androidMain.dependencies {
-            implementation(compose.preview)
-            implementation(libs.androidx.activity.compose)
-        }
+        androidMain.dependencies { }
         commonMain.dependencies {
-            implementation(compose.runtime)
-            implementation(compose.foundation)
-            implementation(compose.material)
-            implementation(compose.ui)
-            implementation(compose.components.resources)
-            implementation(compose.components.uiToolingPreview)
-            implementation(libs.androidx.navigation)
-
-            implementation(libs.compottie)
-
-            //feature Api
-            implementation(project(":mFeatures:featureApi"))
-            implementation(project(":mArch"))
-            implementation(project(":mUIKit"))
-
-
+            implementation(libs.matrix.trixnity)
         }
     }
 
@@ -58,7 +40,7 @@ kotlin {
 
 
 android {
-    namespace = "kz.flyingv.shutapp.auth"
+    namespace = "kz.flyingv.shutapp.arch"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
@@ -83,13 +65,7 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-    buildFeatures {
-        compose = true
-    }
     dependencies {
         debugImplementation(compose.uiTooling)
     }
-}
-dependencies {
-    implementation(libs.androidx.lifecycle.runtime.compose.android)
 }

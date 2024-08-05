@@ -29,6 +29,7 @@ dependencyResolutionManagement {
 }
 
 include(":composeApp")
+include(":mArch")
 include(":mCore")
 include(":mUIKit")
 include(":mFeatures:featureApi")
