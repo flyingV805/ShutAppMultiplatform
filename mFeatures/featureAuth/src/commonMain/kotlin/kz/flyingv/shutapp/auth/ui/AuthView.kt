@@ -17,6 +17,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import kz.flyingv.shutapp.auth.ui.fragment.WelcomeFragment
 import kz.flyingv.shutapp.auth.ui.state.AuthStage
 import kz.flyingv.shutapp.uikit.decoration.accentGradient
@@ -25,7 +26,7 @@ import kz.flyingv.shutapp.uikit.decoration.welcomeGradientPrimary
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-internal fun AuthView(viewModel: AuthViewModel) {
+internal fun AuthView(viewModel: AuthViewModel = viewModel{ AuthViewModel() }) {
 
     val pagerState = rememberPagerState { AuthStage.entries.size }
 

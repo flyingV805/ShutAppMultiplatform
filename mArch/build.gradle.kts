@@ -30,9 +30,8 @@ kotlin {
 
     sourceSets {
 
-        androidMain.dependencies { }
         commonMain.dependencies {
-            implementation(libs.matrix.trixnity)
+            implementation(libs.androidx.viewmodel)
         }
     }
 
