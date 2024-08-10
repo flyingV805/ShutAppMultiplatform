@@ -18,6 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import kz.flyingv.shutapp.auth.ui.fragment.ServerFragment
 import kz.flyingv.shutapp.auth.ui.fragment.WelcomeFragment
 import kz.flyingv.shutapp.auth.ui.state.AuthStage
 import kz.flyingv.shutapp.uikit.decoration.accentGradient
@@ -51,6 +52,7 @@ internal fun AuthView(viewModel: AuthViewModel = viewModel{ AuthViewModel() }) {
                 }
             }
         }
+
         Text("AuthScreen!!!")
 
         HorizontalPager(
@@ -59,8 +61,9 @@ internal fun AuthView(viewModel: AuthViewModel = viewModel{ AuthViewModel() }) {
             userScrollEnabled = false
         ){
 
-            when(AuthStage.entries[it]){
-                AuthStage.Welcome -> WelcomeFragment(welcomeDone = {})
+            when(uiState.value.stage){
+                AuthStage.Welcome -> WelcomeFragment(welcomeDone = { viewModel.reduce(AuthAction.WelcomeDone) })
+                AuthStage.Server -> ServerFragment()
             }
 
         }
