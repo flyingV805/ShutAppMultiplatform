@@ -10,9 +10,13 @@ private val coreModule = module {
 }
 
 private val featuresModule = module {
-    //declareMultibinding<String, Int>()
+
     single { FeatureLaunch() } bind Feature::class
-    single { FeatureAuth() } bind Feature::class
+
+    val auth = FeatureAuth()
+    single { auth } bind Feature::class
+    single( named("auth") ){ auth } //pretty bad solution, but ok for now
+
 }
 
 val appDiModules = listOf(

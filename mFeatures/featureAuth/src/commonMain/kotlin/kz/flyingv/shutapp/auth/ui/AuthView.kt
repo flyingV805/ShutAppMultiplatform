@@ -38,13 +38,13 @@ internal fun AuthView(viewModel: AuthViewModel = viewModel{ AuthViewModel() }) {
     ){
 
         Crossfade(
-            targetState = 1,
+            targetState = uiState.value.stage,
             label = "",
             animationSpec = tween(durationMillis = 500)
         ){
             when(it){
-                1 -> Box(modifier = Modifier.fillMaxSize().background(welcomeGradientPrimary))
-                else -> Box(
+                AuthStage.Welcome -> Box(modifier = Modifier.fillMaxSize().background(welcomeGradientPrimary))
+                AuthStage.Server -> Box(
                     modifier = Modifier.fillMaxSize().background(welcomeGradientAccent),
                     contentAlignment = Alignment.TopEnd
                 ){
