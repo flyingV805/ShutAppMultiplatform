@@ -33,6 +33,8 @@ kotlin {
         androidMain.dependencies { }
         commonMain.dependencies {
             implementation(libs.matrix.trixnity)
+            implementation(libs.matrix.media)
+            implementation(libs.matrix.room)
         }
     }
 

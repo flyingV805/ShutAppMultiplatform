@@ -43,6 +43,10 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.navigation)
 
+            //core
+            implementation(project(":mCore"))
+
+
             //feature Api
             implementation(project(":mFeatures:featureApi"))
 

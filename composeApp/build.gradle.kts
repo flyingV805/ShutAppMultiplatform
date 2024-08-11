@@ -53,6 +53,8 @@ kotlin {
 
             //di
             implementation(libs.koin.core)
+
+            implementation(project(":mCore"))
             //implementation(libs.koin.compose)
             implementation(project(":mUIKit"))
             //feature Api (For DI)
