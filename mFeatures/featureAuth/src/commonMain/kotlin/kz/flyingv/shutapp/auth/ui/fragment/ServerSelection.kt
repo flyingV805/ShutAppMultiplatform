@@ -28,7 +28,7 @@ import shutapp.mfeatures.featureauth.generated.resources.Res
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
-fun ServerFragment(){
+fun ServerSelection(){
 
     var compositionString by remember { mutableStateOf<String?>(null) }
     LaunchedEffect(Unit){ compositionString = Res.readBytes("files/server.json").decodeToString() }

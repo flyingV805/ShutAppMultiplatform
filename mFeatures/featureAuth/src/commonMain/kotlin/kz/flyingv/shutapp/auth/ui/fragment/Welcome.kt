@@ -21,7 +21,6 @@ import androidx.compose.ui.unit.dp
 import io.github.alexzhirkevich.compottie.LottieAnimation
 import io.github.alexzhirkevich.compottie.LottieCompositionSpec
 import io.github.alexzhirkevich.compottie.LottieConstants
-import io.github.alexzhirkevich.compottie.animateLottieCompositionAsState
 import io.github.alexzhirkevich.compottie.rememberLottieComposition
 import kz.flyingv.shutapp.uikit.composable.ShutAppButton
 import org.jetbrains.compose.resources.ExperimentalResourceApi
@@ -29,7 +28,7 @@ import shutapp.mfeatures.featureauth.generated.resources.Res
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
-fun WelcomeFragment(welcomeDone: () -> Unit?){
+fun Welcome(welcomeDone: () -> Unit?){
 
     var compositionString by remember { mutableStateOf<String?>(null) }
     LaunchedEffect(Unit){ compositionString = Res.readBytes("files/welcome.json").decodeToString() }

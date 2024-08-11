@@ -10,7 +10,7 @@ class AuthViewModel: UIViewModel<AuthState, AuthAction, AuthEvent>(
     override fun reduce(action: AuthAction) {
         when(action){
             AuthAction.WelcomeDone -> {
-                val newState = currentState().copy(stage = AuthStage.Server)
+                val newState = currentState().copy(stage = AuthStage.ServerSelection)
                 pushState(newState)
             }
         }

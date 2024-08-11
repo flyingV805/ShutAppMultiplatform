@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
@@ -18,8 +17,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import kz.flyingv.shutapp.auth.ui.fragment.ServerFragment
-import kz.flyingv.shutapp.auth.ui.fragment.WelcomeFragment
+import kz.flyingv.shutapp.auth.ui.fragment.Login
+import kz.flyingv.shutapp.auth.ui.fragment.Registration
+import kz.flyingv.shutapp.auth.ui.fragment.ServerCapabilities
+import kz.flyingv.shutapp.auth.ui.fragment.ServerSelection
+import kz.flyingv.shutapp.auth.ui.fragment.Welcome
 import kz.flyingv.shutapp.auth.ui.state.AuthStage
 import kz.flyingv.shutapp.uikit.decoration.accentGradient
 import kz.flyingv.shutapp.uikit.decoration.welcomeGradientAccent
@@ -44,26 +46,33 @@ internal fun AuthView(viewModel: AuthViewModel = viewModel{ AuthViewModel() }) {
         ){
             when(it){
                 AuthStage.Welcome -> Box(modifier = Modifier.fillMaxSize().background(welcomeGradientPrimary))
-                AuthStage.Server -> Box(
+                AuthStage.ServerSelection -> Box(
                     modifier = Modifier.fillMaxSize().background(welcomeGradientAccent),
                     contentAlignment = Alignment.TopEnd
                 ){
                     Box(modifier = Modifier.height(300.dp).width(300.dp).background(accentGradient))
                 }
+
+                AuthStage.ServerCapabilities -> TODO()
+                AuthStage.Registration -> TODO()
+                AuthStage.Login -> TODO()
             }
         }
 
         Text("AuthScreen!!!")
 
-        HorizontalPager(
+        Crossfade(
             modifier = Modifier.fillMaxSize(),
-            state = pagerState,
-            userScrollEnabled = false
+            targetState = pagerState,
+            animationSpec = tween(durationMillis = 250)
         ){
 
             when(uiState.value.stage){
-                AuthStage.Welcome -> WelcomeFragment(welcomeDone = { viewModel.reduce(AuthAction.WelcomeDone) })
-                AuthStage.Server -> ServerFragment()
+                AuthStage.Welcome -> Welcome(welcomeDone = { viewModel.reduce(AuthAction.WelcomeDone) })
+                AuthStage.ServerSelection -> ServerSelection()
+                AuthStage.ServerCapabilities -> ServerCapabilities()
+                AuthStage.Registration -> Registration()
+                AuthStage.Login -> Login()
             }
 
         }

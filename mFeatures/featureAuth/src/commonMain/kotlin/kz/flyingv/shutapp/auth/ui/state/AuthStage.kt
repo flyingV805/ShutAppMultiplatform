@@ -2,5 +2,8 @@ package kz.flyingv.shutapp.auth.ui.state
 
 enum class AuthStage {
     Welcome,
-    Server
+    ServerSelection,
+    ServerCapabilities,
+    Registration,
+    Login
 }
