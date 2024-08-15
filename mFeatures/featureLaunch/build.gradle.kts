@@ -45,6 +45,7 @@ kotlin {
 
             //core
             implementation(project(":mCore"))
+            implementation(libs.koin.core)
 
 
             //feature Api
