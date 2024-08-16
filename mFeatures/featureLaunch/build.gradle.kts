@@ -45,6 +45,7 @@ kotlin {
 
             //core
             implementation(project(":mCore"))
+            api(project(":mArch"))
             implementation(libs.koin.core)
 
 

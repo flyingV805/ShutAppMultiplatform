@@ -13,13 +13,18 @@ private val coreModule = module {
 
 }
 
+// not so good implementation tbh, need something more secure
 private val featuresModule = module {
 
-    single { FeatureLaunch() } bind Feature::class
+    // launch
+    val launch = FeatureLaunch()
+    includes(launch.diModule)
+    single { launch } bind Feature::class
 
     val auth = FeatureAuth()
+    includes(auth.diModule)
     single { auth } bind Feature::class
-    single( named("auth") ){ auth } //pretty bad solution, but ok for now
+    single( named("auth") ){ auth } //pretty bad solution, but guess ok for now
 
 }
 

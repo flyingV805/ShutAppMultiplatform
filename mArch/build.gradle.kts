@@ -31,7 +31,7 @@ kotlin {
     sourceSets {
 
         commonMain.dependencies {
-            implementation(libs.androidx.viewmodel)
+            api(libs.androidx.viewmodel)
         }
     }
 

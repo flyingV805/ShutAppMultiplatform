@@ -20,7 +20,6 @@ fun App(
 ) {
 
     val navController: NavHostController = rememberNavController()
-
     val featureLaunch = remember { getKoin().get<FeatureLaunch>() }
     val features = remember { getKoin().getAll<Feature>() }
 
